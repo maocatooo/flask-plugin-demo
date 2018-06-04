@@ -1,0 +1,49 @@
+{% extends 'bootstrap/base.html' %}
+
+
+{% block title %}babababa{% endblock %}
+
+{% block content %}
+    <div style="text-align: center;margin-top: 200px">
+    <form  id = "aaa" method="post" action="{{ url_for('.index') }}">
+{#            <h1>{{ self.title() }}</h1>#}
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}:
+            {{ form.name }} <span style="color: red">{{ form.name.errors[0]  }}</span>
+             <br>
+            {{ form.pwd.label }}:
+            {{ form.pwd }}<span style="color: red">{{ form.pwd.errors[0] }}</span>
+            <br>
+            {% for v in get_flashed_messages() %}
+                <p style="color:green;">{{ v }}</p>
+            {% endfor %}
+            {{ form.sub }}
+    </form>
+    </div>
+
+
+{% endblock  %}
+{##}
+{#{% block scripts %}#}
+{##}
+{#    {{ super() }}#}
+{#    <script src='/static/jquery.form.js'>#}
+{##}
+{#    </script>#}
+{#    <script>#}
+{#    var option={#}
+{#        url:"/",#}
+{#        type:'POST',#}
+{#        datatype:"json",#}
+{#        success:function (d) {#}
+{#            console.log(d)#}
+{#        },#}
+{#        error:function (d) {#}
+{#            console.log("err")#}
+{#        }#}
+{#    }#}
+{#    $("#aaa").ajaxForm(option)#}
+{##}
+{#    </script>#}
+{##}
+{#{% endblock  %}#}

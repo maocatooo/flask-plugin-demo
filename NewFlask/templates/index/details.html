@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+
+
+{% block title %}babababa{% endblock %}
+
+{% block content %}
+    <div style="text-align: center;margin-top: 150px"><a href="{{ url_for('.logout') }}">退出登录</a></div>
+    <div id="test" style="text-align: center;margin-top: 200px"></div>
+
+
+{% endblock  %}
+{% block scripts %}
+
+    {{ super() }}
+    <script>
+     window.onload = function(){
+              $.ajax({
+                    url:'/details',
+                    type:'POST',
+                    data:{
+                    },
+                    datatype:'json',
+                    success:function (da) {
+                        console.log( da);
+                        var data = da.data;
+                        var str = '';
+                        for (var key in da){//遍历键值对
+                            str +="<h3>"+key+":"+da[key]+"</h3>"
+                        };
+                        $("#test").html(str);
+                    },
+                    error: function () {
+                            alert("失败");
+                    }
+                })
+    }
+    </script>
+
+{% endblock  %}
